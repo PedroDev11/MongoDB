@@ -1,0 +1,67 @@
+use examen_informacion 
+
+db.createCollection("publisher")
+db.createCollection("book")
+db.createCollection("journal")
+
+1.-
+var array = {"city": ["Londers", "Oxford", "Boston", "New York", "San Diego"]}
+db.publisher.insert(array)
+db.publisher.insert({"name": "Academic Press"}, (array), {"_id: 98543"})
+
+db.publisher.insert({"name": "Academic Press"}, {$push: {"city": {$each: ["Londers", "Oxford", "Boston", "New York", "San Diego"]}}},
+{"_id: 98543"})
+
+2.-
+db.publisher.insert({"name": "Ortega", "city": "Barcelona", "_id: 12345"})
+
+3.-
+db.publisher.insert({"name": "Limusa", "city": "Mexico", "_id: 12377"})
+
+4.-
+db.publisher.insert({"_id: 12345", "name": "Addison-Wesley"})
+
+5.-
+db.publisher.insert({"_id: 67892", "name": "Mc Graw Hill"})
+
+6.-
+var areglo = [1, 2]
+db.publisher.insert({"name": "Institute of Electrical and Electronics Engineers publications",
+"year": "1975", "journals": (areglo), "field": "electrical and electronics engineers and computer science", "_id: 90786"})
+
+
+
+1.-
+db.book.insert({"_id": "1", "title": "El lenguaje Unificado de Modelado", 
+"publisher_id": "Addison-Wesley", "year": "2013", "authors": [{"_id": "1", "name": "Grady Booch", "company": {"name": "IBM", "country": "USA"}},
+{"_id": "2", "name": "James Rumbaugh", "company": {"name": "IBM", "country": "USA"}}, 
+{"_id": "3", "name": "Ivar Jacobson", "company": "country": "USA"}], "content": {"pages": "527", "chapters": "33"} })
+
+2.-
+db.book.insert({"_id": "2", "title": "MongoDB: The Definitve Guide", 
+"authors": ["Kristina Chodorow", "Mike Diralf"], "published_date": {"$date": "2010-09-T0 2:00:00.000+0200"},
+"pages": "216"})
+
+
+
+1.-
+db.journal.insert({"name", "IEEE Transactions on Software Engineering", "issn": ["0098-5589", "1939-3520"],
+"discipline": "software engineering", "_id": "1"})
+
+2.-
+db.journal.insert({"name", "IEEE Transactions on Wireless Comunications", "_id": "2"})
+
+3.-
+db.journal.insert({"_id": "3", "name", "Automated Software Engineering", "issn": ["0928-8910", "1573-7535"],
+"discipline": "software engineering", "number": "10515"})
+
+
+		EDITAR
+db.publisher.update({"_id": "98543"}, {$set: {"city": "Palermo"}})
+
+		RECUPERAR LOS DATOS 
+
+db.book.find({"pages": {$gt: "30"}, {$lt: "200"}}).pretty()
+
+db.producto.find({"Antiguedad": {$gt: "30"}}).pretty()   $gte
+db.producto.find({{"Antiguedad": {$lt: "15"}}).pretty() $lte

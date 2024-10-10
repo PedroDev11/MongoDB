@@ -1,0 +1,319 @@
+•	Crear base de datos llamada tercer_examen
+use examenn_informacion 
+
+•	Crear las collections correspondientes
+db.createCollection("publisher")
+db.createCollection("book")
+db.createCollection("journal")
+
+1.-
+db.publisher.insert({"name": "Academic Press", 
+"city": ["Londers", "Oxford", "Boston", "New York", "San Diego"], 
+"_id": "98543"})
+
+db.publisher.insert({"name": "Academic Press"}, 
+{$push: {"city": {$each: ["Londers", "Oxford", "Boston", "New York", "San Diego"]}}},
+{"_id": "98543"})
+
+2.-
+db.publisher.insert({"name": "Ortega", 
+"city": "Barcelona", 
+"_id": "12345"})
+
+3.-
+db.publisher.insert({"name": "Limusa", 
+"city": "Mexico", 
+"_id": "12377"})
+
+4.-
+db.publisher.insert({"_id": "345667", 
+"name": "Addison-Wesley"})
+
+5.-
+db.publisher.insert({"_id": "67892", 
+"name": "Mc Graw Hill"})
+
+6.-
+var areglo = [1, 2]
+db.publisher.insert({"name": "Institute of Electrical and Electronics Engineers publications",
+"year": "1975", 
+"journals": (areglo), 
+"field": "electrical and electronics engineers and computer science", 
+"_id: 90786"})
+
+
+db.publisher.insert({"name": "Institute of Electrical and Electronics Engineers publications",
+"year": "1975", 
+"journals": ["1", "2"], 
+"field": "electrical and electronics engineers and computer science", 
+"_id": "90786"})
+
+
+
+1.-
+db.book.insert({
+"_id": "1", 
+"title": "El lenguaje Unificado de Modelado", 
+"publisher_id": "Addison-Wesley", 
+"year": "2013", 
+"authors": [
+{"_id": "1", 
+"name": "Grady Booch", 
+"company": {"name": "IBM", "country": "USA"}
+},
+{"_id": "2", 
+"name": "James Rumbaugh", 
+"company": {"name": "IBM", "country": "USA"}
+}, 
+{"_id": "3", 
+"name": "Ivar Jacobson", 
+"company": "USA"}
+], 
+"content": {"pages": "527", "chapters": "33"}})
+
+2.-
+db.book.insert({"_id": "2", 
+"title": "MongoDB: The Definitve Guide", 
+"authors": ["Kristina Chodorow", "Mike Diralf"], 
+"published_date": {"$date": "2010-09-T0 2:00:00.000+0200"},
+"pages": "216"})
+
+
+1.-
+db.journal.insert({"name": "IEEE Transactions on Software Engineering", 
+"issn": ["0098-5589", "1939-3520"],
+"discipline": "software engineering", 
+"_id": "1"})
+
+2.-
+db.journal.insert({"name": "IEEE Transactions on Wireless Comunications", 
+"_id": "2"})
+
+3.-
+db.journal.insert({"_id": "3", 
+"name": "Automated Software Engineering", 
+"issn": ["0928-8910", "1573-7535"],
+"discipline": "software engineering", 
+"number": "10515"})
+
+
+•	Ingresar tres documentos por medio de cursores donde  se inserten por variables en cada una de las  collections creadas con su información
+var cursor = db.publisher.find()
+cursor
+
+var cursor2 = db.book.find()
+cursor2 
+
+var cursor3 = db.journal.find()
+cursor3
+
+•	Editar el documento y actualizar el campo country de uno de los documentos a mexico ya agregados
+db.publisher.update({"_id": "98543"}, {$set: {"city": "Mexico"}})
+
+•	Recuperar los documentos cuyo book en su contenido de paginas este entre 30 a 200 paginas  y su city sea México
+db.book.find({"city": "Mexico", "pages": {$gt: "30"}, {$lt: "200"}}).pretty()
+
+db.producto.find({"Antiguedad": {$gt: "30"}}).pretty()   $gte
+db.producto.find({{"Antiguedad": {$lt: "15"}}).pretty() $lte
+
+•	Mostrar los Publisher cuyo nombre de city inicie con la letra M y el año de publicación sea mayor a 2000
+db.publisher.find({ $and: [{"year": {$gt: "2000"}}, {"city": /^M/}]})
+
+•	Recuperar los documentos sobre journals cuyo number sea igual a 1000
+db.journal.find({"number": "1000"})
+
+•	Agregar un arreglo en el journals del publiser cuyo valor sea [11,12,1,3,14]
+db.publisher.update({"_id": "90786"}, {$push: {journals: {$each: [11, 12, 1, 3, 14]}} })
+db.publisher.find({"_id": "90786"})
+
+•	Eliminar un elemento del arreglo journals del publiser cuyo valor sea 4
+db.publisher.update({}, {$pull: {"journals": "4"}})
+
+•	Crear un índice único y no único por cada uno de los documentos. 
+db.publisher.remove({})
+
+db.publisher.createIndex({"name": 1}, {unique: true})
+db.publisher.createIndex({"name": 1})
+db.publisher.createIndex({"city": 1}, {unique: true})
+db.publisher.createIndex({"city": 1})
+db.publisher.createIndex({"_id": 1}, {unique: true})
+db.publisher.createIndex({"_id": 1})
+db.publisher.createIndex({"year": 1}, {unique: true})
+db.publisher.createIndex({"year": 1})
+db.publisher.createIndex({"journals": 1}, {unique: true})
+db.publisher.createIndex({"journals": 1})
+db.publisher.createIndex({"field": 1}, {unique: true})
+db.publisher.createIndex({"field": 1})
+
+db.book.remove({})
+
+db.publisher.createIndex({"_id": 1}, {unique: true})
+db.publisher.createIndex({"_id": 1})
+db.publisher.createIndex({"title": 1}, {unique: true})
+db.publisher.createIndex({"title": 1})
+db.publisher.createIndex({"publisher_id": 1}, {unique: true})
+db.publisher.createIndex({"publisher_id": 1})
+db.publisher.createIndex({"year": 1}, {unique: true})
+db.publisher.createIndex({"year": 1})
+db.publisher.createIndex({"authors": 1}, {unique: true})
+db.publisher.createIndex({"authors": 1})
+db.publisher.createIndex({"content": 1}, {unique: true})
+db.publisher.createIndex({"content": 1})
+db.publisher.createIndex({"published_date": 1}, {unique: true})
+db.publisher.createIndex({"published_date": 1})
+db.publisher.createIndex({"pages": 1}, {unique: true})
+db.publisher.createIndex({"pages": 1})
+
+db.journal.remove({})
+
+db.publisher.createIndex({"name": 1}, {unique: true})
+db.publisher.createIndex({"name": 1})
+db.publisher.createIndex({"issn": 1}, {unique: true})
+db.publisher.createIndex({"issn": 1})
+db.publisher.createIndex({"discipline": 1}, {unique: true})
+db.publisher.createIndex({"discipline": 1})
+db.publisher.createIndex({"_id": 1}, {unique: true})
+db.publisher.createIndex({"_id": 1})
+db.publisher.createIndex({"number": 1}, {unique: true})
+db.publisher.createIndex({"number": 1})
+
+•	Obtener los primeros dos autores del arreglo correspondiente en la collections books
+db.book.find({}, {"authors": {$slice: 2}, _id:false})
+
+•	Mostrar el arreglo de issn de 0928-1215
+db.journal.find({"issn": "0928-8910"})
+db.journal.find({"issn": "0928-1215"})
+
+
+•	Ordenar el arreglo de authors en book de manera descendente
+db.book.update({}, {$push: {"authors": {$each: [], $sort: -1}}})
+db.book.find().pretty()
+db.usuarios.update({}, {$push: {valores: {$each: [77, 98], $sort: 1}}})
+
+•	Eliminar los elementos cuyo valor sea igual 9 y 11
+db.publisher.update({}, {$pullAll: {"journals": [9, 11]}})  
+db.publisher.find({"_id": "90786"})
+
+•	Eliminar un  documento por cada collections
+db.publisher.remove({"id": "12345"})
+db.book.remove({"id": "2"})
+db.journal.remove({"id": "2"})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+db.publisher.insert({
+"name": "Academic Press", 
+"city": ["Londers", "Oxford", "Boston", "New York", "San Diego"], 
+"_id": 98543"
+},
+{
+"name": "Ortega", 
+"city": "Barcelona", 
+"_id": 12345"
+},
+{"name": "Limusa", 
+"city": "Mexico", 
+"_id": 12377"
+},
+{
+"_id": 12345", 
+"name": "Addison-Wesley"
+},
+{
+"_id": 67892", 
+"name": "Mc Graw Hill"
+},
+{
+"name": "Institute of Electrical and Electronics Engineers publications",
+"year": "1975", 
+"journals": [1, 2], 
+"field": "electrical and electronics engineers and computer science", 
+"_id": 90786"
+})
+
+
+
+
+db.book.insert({
+"_id": "1", 
+"title": "El lenguaje Unificado de Modelado", 
+"publisher_id": "Addison-Wesley", 
+"year": "2013", 
+"authors": [
+{
+"_id": "1", 
+"name": "Grady Booch", 
+"company": {"name": "IBM", "country": "USA"}
+},
+{
+"_id": "2", 
+"name": "James Rumbaugh", 
+"company": {"name": "IBM", "country": "USA"}
+}, 
+{
+"_id": "3", 
+"name": "Ivar Jacobson", 
+"company": "country": "USA"
+}
+], 
+"content": {"pages": "527", "chapters": "33"}
+},
+{
+"_id": "2", 
+"title": "MongoDB: The Definitve Guide", 
+"authors": ["Kristina Chodorow", "Mike Diralf"], 
+"published_date": 
+{"$date": "2010-09-T0 2:00:00.000+0200"},
+"pages": "216"
+})
+
+
+
+
+db.journal.insert({
+"name": "IEEE Transactions on Software Engineering", 
+"issn": ["0098-5589", "1939-3520"],
+"discipline": "software engineering", 
+"_id": "1"
+},
+{
+"name": "IEEE Transactions on Wireless Comunications", 
+"_id": "2"
+},
+{
+"_id": "3", 
+"name": "Automated Software Engineering", 
+"issn": ["0928-8910", "1573-7535"],
+"discipline": "software engineering", 
+"number": "10515"
+})

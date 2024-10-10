@@ -1,0 +1,34 @@
+for(i=0; i<100; i++){db.test.insert({valor: i})}
+db.test.find()
+
+var cursor = db.test.find()
+cursor
+
+var cursor = db.test.find()
+cursor.forEach(function(d) {print(d)})
+
+var cursor = db.test.find()
+cursor.forEach(function(d) {print(d.valor)})
+
+var cursor = db.test.find()
+cursor.forEach(function(d) {d.valor = 100, db.test.save(d)})
+var cursor = db.test.find()
+cursor.forEach(function(d) {print(d.valor)})
+
+var uno = {nombre: "McIntosh", valor: 12, venta: true}
+var dos = {nombre: "Empire", valor: 13, venta: true}
+var tres = {nombre: "Red Rome", valor: 15, venta: true}
+var cuatro = {nombre: "Reineta", valor: 10, venta: true}
+var cinco = {nombre: "Fuji", valor: 10, venta: true}
+var seis = {nombre: "Royal Gala", valor: 50, venta: true}
+var siete = {nombre: "Delicious", valor: 2, venta: false}
+
+db.manzana.insert([uno, dos, tres, cuatro, cinco, seis, siete])
+db.manzana.find().pretty()
+db.manzana.find().count()
+
+db.manzana.find().sort({valor: 1})
+db.manzana.find().sort({valor: -1}).limit(3).pretty()
+db.manzana.find().sort({valor: -1}).skip(1).limit(2).pretty()
+db.manzana.find().skip(3).size()
+

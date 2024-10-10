@@ -1,0 +1,514 @@
+use articulos
+
+db.createCollection("imagen")
+
+db.createCollection("producto")
+
+db.createCollection("usuario")
+
+db.createCollection("categoria")
+
+db.createCollection("subcategoria")
+
+db.createCollection("comentario")
+
+		IMAGEN
+db.imagen.insert({
+"id": "1",
+"Titulo": "Playera a la moda",
+"Imagen": "foto1"
+})
+
+db.imagen.insert({
+"id": "2",
+"Titulo": "Playera que seguro te gustara",
+"Imagen": "foto2"
+})
+
+db.imagen.insert({
+"id": "3",
+"Titulo": "Pantalon a la moda",
+"Imagen": "foto3"
+})
+
+db.imagen.insert({
+"id": "4",
+"Titulo": "Pantalon aestethic",
+"Imagen": "foto4"
+})
+
+db.imagen.insert({
+"id": "5",
+"Titulo": "Putishort",
+"Imagen": "foto5"
+})
+
+db.imagen.insert({
+"id": "6",
+"Titulo": "Tenis que uso bad bunny",
+"Imagen": "foto6"
+})
+
+db.imagen.insert({
+"id": "7",
+"Titulo": "Pantalon que combina con todo",
+"Imagen": "foto7"
+})
+
+db.imagen.insert({
+"id": "8",
+"Titulo": "Camisa que te hace ver mas guapo",
+"Imagen": "foto8"
+})
+
+db.imagen.insert({
+"id": "9",
+"Titulo": "Camisa para exponer",
+"Imagen": "foto9"
+})
+
+db.imagen.insert({
+"id": "10",
+"Titulo": "Playera aesteril como dicen los chavos",
+"Imagen": "foto10"
+})
+
+
+		PRODUCTO
+db.producto.insert({
+"id": "1",
+"Descripcion": "Bonito bueno y barato",
+"Direccion_recogida": "ote 44a mz78 lt10",
+"Estado": "Activo",
+"Fecha_publicacion": "05/08/2022",
+"Fecha_recogida": "12/11/2022",
+"Antiguedad": "5 meses",
+"Imagen": "foto1"
+})
+
+db.producto.insert({
+"id": "2",
+"Descripcion": "Tela 100% algodon",
+"Direccion_recogida": "ote 40 mz68 lt15",
+"Estado": "Activo",
+"Fecha_publicacion": "07/08/2022",
+"Fecha_recogida": "14/11/2022",
+"Antiguedad": "3 meses",
+"Imagen": "foto2"
+})
+
+db.producto.insert({
+"id": "3",
+"Descripcion": "Tela suave",
+"Direccion_recogida": "ote 41a mz50 lt11",
+"Estado": "Activo",
+"Fecha_publicacion": "15/07/2022",
+"Fecha_recogida": "01/10/2022",
+"Antiguedad": "7 meses",
+"Imagen": "foto3"
+})
+
+db.producto.insert({
+"id": "4",
+"Descripcion": "Grande a tu comodidad",
+"Direccion_recogida": "ote 39 mz18 lt05",
+"Estado": "Activo",
+"Fecha_publicacion": "23/08/2022",
+"Fecha_recogida": "24/09/2022",
+"Antiguedad": "1 meses",
+"Imagen": "foto4"
+})
+
+db.producto.insert({
+"id": "5",
+"Descripcion": "Colores bonitos",
+"Direccion_recogida": "ote 38 mz25 lt19",
+"Estado": "Activo",
+"Fecha_publicacion": "01/01/2022",
+"Fecha_recogida": "20/09/2022",
+"Antiguedad": "8 meses",
+"Imagen": "foto5"
+})
+
+db.producto.insert({
+"id": "6",
+"Descripcion": "Perfecto para ti",
+"Direccion_recogida": "ote 20 mz10 lt14",
+"Estado": "Activo",
+"Fecha_publicacion": "29/08/2022",
+"Fecha_recogida": "19/10/2022",
+"Antiguedad": "2 meses",
+"Imagen": "foto6"
+})
+
+db.producto.insert({
+"id": "7",
+"Descripcion": "Perfecto a tu medida",
+"Direccion_recogida": "ote 44 mz79 lt15",
+"Estado": "Activo",
+"Fecha_publicacion": "28/02/2022",
+"Fecha_recogida": "20/09/2022",
+"Antiguedad": "7 meses",
+"Imagen": "foto7"
+})
+
+db.producto.insert({
+"id": "8",
+"Descripcion": "A la medida de tu monedero",
+"Direccion_recogida": "ote 30 mz45 lt21",
+"Estado": "Activo",
+"Fecha_publicacion": "19/03/2022",
+"Fecha_recogida": "12/12/2022",
+"Antiguedad": "9 meses",
+"Imagen": "foto8"
+})
+
+db.producto.insert({
+"id": "9",
+"Descripcion": "Para todos los muchachos",
+"Direccion_recogida": "ote 20 mz48 lt25",
+"Estado": "Activo",
+"Fecha_publicacion": "11/05/2022",
+"Fecha_recogida": "11/09/2022",
+"Antiguedad": "4 meses",
+"Imagen": "foto9"
+})
+
+db.producto.insert({
+"id": "10",
+"Descripcion": "Estar a la moda",
+"Direccion_recogida": "ote 40a mz15 lt30",
+"Estado": "Activo",
+"Fecha_publicacion": "13/12/2022",
+"Fecha_recogida": "01/01/2023",
+"Antiguedad": "1 meses",
+"Imagen": "foto10"
+})
+
+
+		USUARIO
+db.usuario.insert({
+"id": "1",
+"Nombre": "Tania",
+"Apellidos": "Rojas",
+"Email": "pedro_rv@tesch.edu.mx",
+"Direccion": "ote 44a mz78 lt10",
+"Puntuacion_ofertas": "5",
+"Puntiacion_recogidas": "32",
+"Imagen": "foto1"
+})
+
+db.usuario.insert({
+"id": "2",
+"Nombre": "Alberto",
+"Apellidos": "Valladares",
+"Email": "alberto_v@tesch.edu.mx",
+"Direccion": "ote 44a mz78 lt10",
+"Puntuacion_ofertas": "25",
+"Puntiacion_recogidas": "42",
+"Imagen": "foto2"
+})
+
+db.usuario.insert({
+"id": "3",
+"Nombre": "Enrique",
+"Apellidos": "Rojas",
+"Email": "enrique_rv@tesch.edu.mx",
+"Direccion": "ote 44a mz78 lt10",
+"Puntuacion_ofertas": "12",
+"Puntiacion_recogidas": "20",
+"Imagen": "foto3"
+})
+
+db.usuario.insert({
+"id": "4",
+"Nombre": "Luis",
+"Apellidos": "Rojas",
+"Email": "luis_rv@tesch.edu.mx",
+"Direccion": "ote 44a mz78 lt10",
+"Puntuacion_ofertas": "22",
+"Puntiacion_recogidas": "32",
+"Imagen": "foto4"
+})
+
+db.usuario.insert({
+"id": "5",
+"Nombre": "Brian",
+"Apellidos": "Rojas",
+"Email": "brian_rv@tesch.edu.mx",
+"Direccion": "ote 44a mz78 lt10",
+"Puntuacion_ofertas": "27",
+"Puntiacion_recogidas": "30",
+"Imagen": "foto5"
+})
+
+db.usuario.insert({
+"id": "6",
+"Nombre": "Eduardo",
+"Apellidos": "Rojas",
+"Email": "eduardo_rv@tesch.edu.mx",
+"Direccion": "ote 44a mz78 lt10",
+"Puntuacion_ofertas": "40",
+"Puntiacion_recogidas": "55",
+"Imagen": "foto6"
+})
+
+db.usuario.insert({
+"id": "7",
+"Nombre": "Fernando",
+"Apellidos": "Rojas",
+"Email": "fernando_rv@tesch.edu.mx",
+"Direccion": "ote 44a mz78 lt10",
+"Puntuacion_ofertas": "39",
+"Puntiacion_recogidas": "40",
+"Imagen": "foto7"
+})
+
+db.usuario.insert({
+"id": "8",
+"Nombre": "Lalo",
+"Apellidos": "Rojas",
+"Email": "lalo_rs@tesch.edu.mx",
+"Direccion": "ote 44a mz78 lt10",
+"Puntuacion_ofertas": "55",
+"Puntiacion_recogidas": "59",
+"Imagen": "foto8"
+})
+
+db.usuario.insert({
+"id": "9",
+"Nombre": "Raquel",
+"Apellidos": "Valladares",
+"Email": "raquel_vr@tesch.edu.mx",
+"Direccion": "ote 44a mz78 lt10",
+"Puntuacion_ofertas": "60",
+"Puntiacion_recogidas": "60",
+"Imagen": "foto9"
+})
+
+db.usuario.insert({
+"id": "10",
+"Nombre": "Tania",
+"Apellidos": "Rojas",
+"Email": "lobo_rv@tesch.edu.mx",
+"Direccion": "ote 44a mz78 lt10",
+"Puntuacion_ofertas": "5",
+"Puntiacion_recogidas": "100",
+"Imagen": "foto10"
+})
+
+
+		CATEGORIA
+db.categoria.insert({
+"id": 1,
+"Nombre": "Playeras"
+})
+
+db.categoria.insert({
+"id": 2,
+"Nombre": "Pantalones"
+})
+
+db.categoria.insert({
+"id": 3,
+"Nombre": "Sudaderas"
+})
+
+db.categoria.insert({
+"id": 4,
+"Nombre": "Camisas"
+})
+
+db.categoria.insert({
+"id": 5,
+"Nombre": "Chamarras"
+})
+
+db.categoria.insert({
+"id": 6,
+"Nombre": "Sueter"
+})
+
+db.categoria.insert({
+"id": 7,
+"Nombre": "Shorts"
+})
+
+db.categoria.insert({
+"id": 8,
+"Nombre": "Hombres"
+})
+
+db.categoria.insert({
+"id": 9,
+"Nombre": "Mujeres"
+})
+
+db.categoria.insert({
+"id": 10,
+"Nombre": "Tenis"
+})
+
+
+		SUBCATEGORIA
+db.subcategoria.insert({
+"id": 1,
+"Nombre": "Playeras manga corta"
+})
+
+db.subcategoria.insert({
+"id": 2,
+"Nombre": "Playeras manga larga"
+})
+
+db.subcategoria.insert({
+"id": 3,
+"Nombre": "Playeras cuello de tortuga"
+})
+
+db.subcategoria.insert({
+"id": 4,
+"Nombre": "Playeras cuello de V"
+})
+
+db.subcategoria.insert({
+"id": 5,
+"Nombre": "Pantalon skkiny"
+})
+
+db.subcategoria.insert({
+"id": 6,
+"Nombre": "Pantalon acampanado"
+})
+
+db.subcategoria.insert({
+"id": 7,
+"Nombre": "Pantalon holgado"
+})
+
+db.subcategoria.insert({
+"id": 8,
+"Nombre": "Pantalon pegado"
+})
+
+db.subcategoria.insert({
+"id": 9,
+"Nombre": "Sudadera con cierre"
+})
+
+db.subcategoria.insert({
+"id": 10,
+"Nombre": "Sudadera con gorrito"
+})
+
+
+		COMENTARIO
+db.comentario.insert({
+"id": 1,
+"Texto": "Holaa",
+"Fecha": "14/11/2022"
+})
+
+db.comentario.insert({
+"id": 2,
+"Texto": "Como estas",
+"Fecha": "10/11/2022"
+})
+
+db.comentario.insert({
+"id": 3,
+"Texto": "Playera manga corta",
+"Fecha": "17/11/2022"
+})
+
+db.comentario.insert({
+"id": 4,
+"Texto": "Short",
+"Fecha": "24/11/2022"
+})
+
+db.comentario.insert({
+"id": 5,
+"Texto": "Sueter",
+"Fecha": "14/11/2022"
+})
+
+db.comentario.insert({
+"id": 6,
+"Texto": "Pantalon",
+"Fecha": "12/11/2022"
+})
+
+db.comentario.insert({
+"id": 7,
+"Texto": "Tenis deportivos",
+"Fecha": "02/11/2022"
+})
+
+db.comentario.insert({
+"id": 8,
+"Texto": "Chanclas",
+"Fecha": "14/11/2022"
+})
+
+db.comentario.insert({
+"id": 9,
+"Texto": "Chamarra",
+"Fecha": "20/10/2022"
+})
+
+db.comentario.insert({
+"id": 10,
+"Texto": "Gorro",
+"Fecha": "22/09/2022"
+})
+
+		IMAGEN
+db.imagen.update({"id": "1"}, {"id": "11", "Titulo": "Camisa manga corta", "imagen": "foto11"})
+db.imagen.update({"id": "2"}, {"id": "12", "Titulo": "Camisa manga larga", "imagen": "foto12"})
+
+db.imagen.remove({"id": "11"})
+db.imagen.remove({"id": "12"})
+
+		PRODUCTO
+db.producto.update({"id": "1"}, {"id": "21", "Descripcion": "Las 3 B", "Direcciion_recogida": "oriente 44a", 
+"Estado": "Desactivado", "Fecha_publicacion": "15/11/2022", "Fecha_recogida": "14/11/2022", 
+"Antiguedad": "1 mes", "Imagen": "foto21"})
+
+db.producto.update({"id": "2"}, {"id": "22", "Descripcion": "Bueno bonito y barato", "Direcciion_recogida": "oriente 44", 
+"Estado": "Desactivado", "Fecha_publicacion": "15/11/2022", "Fecha_recogida": "14/11/2022", 
+"Antiguedad": "1 mes", "Imagen": "foto22"})
+
+db.producto.remove({"id": "21"})
+db.producto.remove({"id": "22"})
+
+		USUARIO
+db.usuario.update({"id": "3"}, {"id": "33", "Nombre": "Donovan", "Apellidos": "HP", "Email": "donovan_hp@tesch.edu.mx", "Direccion": "oriente 40", 
+"Puntiacion_ofertas": "22", "Puntuacion_recogida": "30", "Imagen": "foto33"})
+
+db.usuario.update({"id": "4"}, {"id": "44", "Nombre": "Jocelyn", "Apellidos": "JL", "Email": "jocelyn_jl@tesch.edu.mx", "Direccion": "oriente 41", 
+"Puntiacion_ofertas": "44", "Puntuacion_recogida": "34", "Imagen": "foto44"})
+
+db.usuario.remove({"id": "33"})
+db.usuario.remove({"id": "44"})
+
+		CATEGORIA
+db.categoria.update({"id": 1}, {"id": 11, "Nombre": "Camisetas"})
+db.categoria.update({"id": 2}, {"id": 22, "Nombre": "Tenis Nike"})
+
+db.categoria.remove({"id": 11})
+db.categoria.remove({"id": 22})
+
+		SUBCATEGORIA
+db.subcategoria.update({"id": 1}, {"id": 11, "Nombre": "Camisa manga corta"})
+db.subcategoria.update({"id": 2}, {"id": 22, "Nombre": "Camisa manga larga"})
+
+db.subcategoria.remove({"id": 11})
+db.subcategoria.remove({"id": 22})
+
+		COMENTARIO
+db.comentario.update({"id": 1}, {"id": 11, "Texto": "Gorrito", "Fecha": "15/11/2022"})
+db.comentario.update({"id": 2}, {"id": 22, "Texto": "Gorroo", "Fecha": "15/11/2022"})
+
+db.comentario.remove({"id": 11})
+db.comentario.remove({"id": 22})

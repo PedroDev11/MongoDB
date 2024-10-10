@@ -1,0 +1,58 @@
+Agrupación por código postal (contar el número de usuarios de cada C.P).
+
+db.usuario.find({"direccion.cp": "56616"})
+
+Consultas por número de teléfono
+db.usuario.find({$or: [{"telefono": "5611913353"}]})
+
+Consultas de noticias publicadas por usuarios
+10 últimas noticias publicadas ordenadas por fecha (de más reciente a más antigua).
+
+db.noticia.createIndex({"fecha": -1})
+db.noticia.find().sort({"fecha": -1}).pretty()
+
+
+Retornar al usuario con nombre de usuario “Carlos”.
+db.usuario.find({"nombre_usuario": "Carlos"})
+
+Contar el número de usuarios con CP= “39005”.
+db.usuario.insert({"nombre_usuario": "pepe_rojas", 
+"cuenta_twitter": "@pepe", 
+"nombre": "pedro", 
+"descripcion": "hola soy pedro",
+"telefono": "111111111",
+"direccion": {"calle": "ote 44a", "numero": "78", "ciudad": "Estado de Mexico", "cp": "39005"}
+})
+
+db.usuario.find({"direccion.cp": "39005"})
+
+
+Retornar a un usuario con número de teléfono: “111111111”.
+db.usuario.find({$or: [{"telefono": "111111111"}]})
+
+8.	Retornar las noticias que contengan titulo que inicia con A
+
+db.noticia.insert({"titulo": "Anteriores",
+"cuerpo": "Choca el cablebus con un carro",
+"fecha": new Date(),
+"tags": "#ciudadDeMexico"
+})
+
+db.noticia.insert({"titulo": "Antecedentes",
+"cuerpo": "Choca el cablebus con un carro",
+"fecha": ISODate("2014-10-19T18:56:20.197Z"),
+"tags": "#ciudadDeMexico"
+})
+
+
+db.noticia.createIndex({"titulo": 1})
+db.noticia.find({"titulo": /^A/})
+
+Noticias publicadas en un periodo de fechas. ¿Se podrían realizar consultas por año, mes y día sobre el campo de tipo ISOdate?. Si la respuesta es sí ¿Cómo sería?.
+db.coleccion.insert({"fecha" : new Date()})
+db.coleccion.insert({"fecha": ISODate("2014-10-19T18:56:20.197Z")})
+
+Para hacer una búsqueda exacta (por fecha y hora), podemos utilizar el siguiente formato:
+db.noticia.find({"fecha" : ISODate("2022-11-29T16:22:24.293Z")})
+
+

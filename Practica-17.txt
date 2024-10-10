@@ -1,0 +1,66 @@
+Arreglo sin documentos: 
+var arreglo = [1, 2, 3]
+
+Arreglo con un campo de un documento cualquiera:
+var usuario = {nombre: "Inti", valores: arreglo}
+
+Lo insertamos en la colleccion usuarios:
+db.usuarios.insert(usuario)
+
+Comprobamos que se inserto:
+db.usuarios.find().pretty()
+
+Para insertar un elemento en un arreglo utilizamos el comando $addToSet
+El addToSet solo agrega un valor siempre y cuando no se encuentre ya en el arreglo
+db.usuarios.update({}, {$addToSet: {valores: 4}})
+
+Para agregar valores duplicados al arreglo utilizamos $push:
+db.usuarios.update({}, {$push: {valores:4}})
+
+Para agregar mas de un valor a un arreglo, se utiliza la palabra reservada $each
+db.usuarios.update({}, {$push: {valores: {$each: [6, 8]}} })
+
+Para agregar un elemento en una posicion que no sea la ultima, utilizamos la palabra reservada $position
+y el indice donde queremos colocar el o los nuevos elementos 
+db.usuarios.update({}, {$push: {valores: {$each: [100, 101], $position: 3}} })
+
+Podemos utilizar sort para ordenar el arreglo e insertar elementos: 
+db.usuarios.update({}, {$push: {valores: {$each: [77, 98], $sort: 1}}})
+
+			ELIMINACION DE ARREGLOS
+Para eliminar un elemento de un arreglo utilizamos la palabra $pull y el valor del
+elemento que queremos eliminar (Eliminar el elemento cuyo valor sea 65)
+db.usuarios.update({}, {$pull: {valores: 77}})
+
+Eliminar los elementos cuyo valor sea mayor o igual que 50
+db.usuarios.update({}, {$pull: {valores: {$gte: 50}}})
+
+Para eliminar mas de un elemento, utilizamos $pullAll (Eliminar los elementos 3 y 4)
+db.usuarios.update({}, {$pullAll: {valores: [3, 4]}})
+
+Para negar una busqueda, es decir buscar un documento cuyo arreglo tenga un elemento diferente a un valor elegido, usamos el $nin
+db.array.find({ejemplo: {$nin: ["XML"]}}, {ejemplo: {$slice: [1, 3]}, _id:false})
+
+			SECCION DE ARREGLOS
+Primero creamos una collecion con un documento que tenga arreglos:
+var ejem = {nombre: "Inti", ejemplo: ["MongoDB", "C#", "SQL", "Java", "Python"]}
+db.array.insert(ejem)
+
+Indicamos que solo queremos mostrar el arreglo "ejemplo"
+db.array.find({}, {ejemplo: true, _id:false})
+
+Se utilice $slice para obtener los n primeros elementos del arreglo
+db.array.find({}, {ejemplo: {$slice: 3}, _id:false})
+
+Si ponemos $slice: -1 nos devolvera el ultimo elemento 
+db.array.find({}, {ejemplo: {$slice: -1}, _id:false})
+
+Para buscar elemento dentro de un rango de posiciones utilizamos el 
+$slice: [indice_inicio, indice_fin]
+db.array.find({}, {ejemplo: {$slice: [1, 3]}, _id:false})
+
+Busqueda con condiciones: Mostrar los documentos cuyo campo ejemplo (arreglo) tenga un elemento "MongoDB":
+db.array.find({ejemplo: {$in: ["MongoDB"]}}, {ejemplo: {$slice: [1, 3]}, _id:false})
+
+Mostrar los documentos cuyo campo ejemplo (arreglo) tenga un elemento "XML"
+db.array.find({ejemplo: {$in: ["XML"]}}, {ejemplo: {$slice: [1, 3]}, _id:false})

@@ -1,0 +1,24 @@
+use NOTICIAS
+
+db.createCollection("usuario")
+db.createCollection("noticia")
+db.createCollection("comentario")
+
+
+db.usuario.insert({"nombre_usuario": "eduardo", 
+"cuenta_twitter": "@eduardo", 
+"nombre": "eduardo", 
+"descripcion": "hola soy eduardo",
+"telefono": "5611913353",
+"direccion": {"calle": "ote 44a", "numero": "78", "ciudad": "Estado de Mexico", "cp": "56616"}
+})
+
+db.noticia.insert({"titulo": "incidentes",
+"cuerpo": "explota cuete",
+"fecha": "05/10/2020",
+"tags": "#ciudadDeMexico"
+})
+
+db.comentario.insert({"fecha": "08/11/2022", 
+"cuerpo": "Noticias de ultimo momento"
+})

@@ -1,0 +1,14 @@
+db.usuario.remove()
+
+db.usuario.createIndex({"nombre_usuario": 1, "cuenta_twitter": 1}, {unique: true})
+
+db.usuario.createIndex({"cp": 1}, {"sparse": true}) //subdocumento  	db.usuario.ensureIndex({"direccion.cp": 1})
+
+db.usuario.createIndex({"telefonos": 1}) //array 				db.usuario.find({"telefonos": {$in: ["5611913353"]}})
+
+--------------------//añadir algunos datos en la collection
+
+db.usuario.insert({}) //insertar datos con id repetido
+
+db.usuario.insert({}) //insertar datos sin valor en el campo id
+

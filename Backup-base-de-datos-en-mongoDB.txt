@@ -1,0 +1,25 @@
+	PRIMERO CREAMOS EL DIRECTORIO
+sudo mkdir /var/backups/mongobackups
+
+	MONGODUMP
+sudo mongodump --db NOMBRE DE LA BASE DE DATOS --out /var/backups/mongobackups/backup
+
+ls
+
+sudo mongodump --db newdb --out /var/backups/mongobackups/`date +"%m-%d-%y"`
+
+ls
+
+	POTERIORMENTE ELIMINAMOS LA BASE DE DATOS 
+use NOMBRE DE LA BASE DE DATSO 
+db.dropDatabase()
+show dbs
+
+	RESTAURACION DE LA BASE DE DATOS
+Para restaurar una colección única como los restaurantes, utilice (Base de datos) newdb.restaurants (Colection) en su lugar
+
+Una vez que tenga una copia de seguridad con marca de tiempo:
+sudo mongorestore --db NOMBRE DE LA BASE --drop /var/backups/mongobackups/HORA DEL BACKUP/NOMBRE DE LA BASE/
+sudo mongorestore --db newdb --drop /var/backups/mongobackups/10-29-20/newdb/
+
+show dbs

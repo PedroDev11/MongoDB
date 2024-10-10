@@ -1,0 +1,53 @@
+	Mostrar todos los productos cuya antigüedad es mayor que 30 dias 
+
+db.producto.find({"Antiguedad": {$gt: "30"}}).pretty()   $gte
+
+	Mostrar todos los productos cuya antigüedad es menor que 80 dias
+
+db.producto.find({"Antiguedad": {$lt: "15"}}).pretty() $lte
+
+	Buscar los documentos donde exista la categoría de “LACTEOS”
+
+db.categoria.find({"Lacteos": {$exists: true}}).count()
+db.categoria.find({"Lacteos": {$exists: false}}).count()
+
+db.categoria.find({"Nombre": {$exists: true}}).count()
+
+	Consultar los comentarios cuyo texto contenga al menos una z en su contenido
+
+db.comentario.find({"Texto": /z/}).pretty()
+
+db.comentario.find({"Texto": {$regex:/z/}}).pretty()
+
+
+	Buscar los usuarios cuyos nombre inicie con T y cuya puntuación sea igual 5 o igual a  buena(dependiendo  del tipo de ponderación).
+
+db.usuario.find({ $and: [{"Puntuacion_ofertas": "5"}, {"Nombre": /^T/}]}).pretty()
+
+	Consultar los productos cuya fecha de recogida sea del 12/12/2020 o cuya fecha de publicación sea igual a 15/02/2021
+
+db.producto.find({"Fecha_recogida": "12/12/2020"}).pretty()
+db.producto.find({"Fecha_publicacion": "05/08/2022"}).pretty()
+
+
+	Muestra los 5 primeros documentos cuyo email inicie con A
+
+
+db.usuario.remove({})
+db.usuario.createIndex({"Email": 1})
+db.usuario.find({"Email": /^a/}).limit(5).pretty()
+
+
+	Mostrar todos los productos excepto los 3 primeros.
+db.producto.find().pretty()
+db.producto.find().pretty().skip(3)
+
+•	Crear un índice en la tabla categoría en el id
+
+db.categoria.remove({})
+db.categoria.createIndex({"id": 1})
+
+•	Crear un índice único en la tabla comentario ene el ID
+
+db.comentario.remove({})
+db.comentario.createIndex({"id": 1}, {"unique": true})
